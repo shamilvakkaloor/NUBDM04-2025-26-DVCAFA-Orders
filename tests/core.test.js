@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {esc,today,safeLink,normalize,prepareUpdate,fingerprint,validDate,pct} from '../core.js';
+import {SEED} from '../seed.js';
+test('all nine legacy seeds load without changing metadata',()=>{for(const o of SEED)assert.deepEqual(normalize(o,o.id),o);});
+test('Oman day changes at 20:00 UTC',()=>{assert.equal(today(new Date('2026-10-04T20:01:00Z')),'2026-10-05');});
+test('only safe evidence URLs are opened',()=>{for(const s of ['javascript:alert(1)','data:text/html,x','//evil.test','https://user:pass@example.com'])assert.equal(safeLink(s),'');assert.equal(safeLink('https://example.com/a'),'https://example.com/a');});
+test('HTML is escaped in text and attribute contexts',()=>{assert.equal(esc('<img onerror="x">&\''),'&lt;img onerror=&quot;x&quot;&gt;&amp;&#39;');});
+test('invalid database records cannot break rendering or inject ids',()=>{assert.throws(()=>normalize({...SEED[0],status:'<script>'},'001'));assert.throws(()=>normalize({...SEED[0],subs:null},'001'));assert.throws(()=>normalize(SEED[0],'001" onclick="x'));});
+test('completion checks conditions and fills date without mutating input',()=>{const o=prepareUpdate(SEED[0],{status:'done'},'Complete','editor@example.com','2026-10-04');assert.equal(o.done,'2026-10-04');assert.equal(pct(o),100);assert.ok(o.subs.every(s=>s.d));assert.equal(SEED[0].subs[0].d,false);assert.equal(o.log.length,1);});
+test('reopening clears completion date; not-started clears conditions',()=>{const done=prepareUpdate(SEED[0],{status:'done'},'','x');const o=prepareUpdate(done,{status:'todo'},'','x');assert.equal(o.done,'');assert.equal(pct(o),0);});
+test('inconsistent progress and dangerous links fail before save',()=>{assert.throws(()=>prepareUpdate(SEED[1],{status:'prog',progress:100},'','x'));assert.throws(()=>prepareUpdate(SEED[1],{link:'javascript:alert(1)'},'','x'));assert.throws(()=>prepareUpdate(SEED[1],{},'x'.repeat(2001),'x'));});
+test('validates dates and compares records independently of field ordering',()=>{assert.equal(validDate('2026-02-30'),false);assert.equal(validDate('2028-02-29'),true);assert.equal(fingerprint({b:2,a:{d:4,c:3}}),fingerprint({a:{c:3,d:4},b:2}));assert.notEqual(fingerprint(SEED[0]),fingerprint({...SEED[0],progress:50}));});
