@@ -1,0 +1,18 @@
+{
+  "name": "dvcafa-resolution-tracker",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/core.test.js",
+    "check": "node --check app.js && node --check core.js && node --check persistence.js && node --check config.js && node --check seed.js",
+    "test:rules": "node --test tests/rules.test.js"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.0",
+    "firebase": "^12.0.0"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "^1.13.6"
+  }
+}

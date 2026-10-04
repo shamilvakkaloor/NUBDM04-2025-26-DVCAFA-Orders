@@ -5,106 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BoD Resolution Tracker · NUBDM-04-2025-26</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Newsreader:wght@600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#eef1f3;--card:#fff;--ink:#15232d;--mut:#5d6b75;--line:#d5dce1;--acc:#0e5a6b;
---s-todo:#8a96a0;--s-prog:#b7791f;--s-done:#2b7a4b;--s-block:#b4382f}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Manrope,system-ui,sans-serif}
-header{background:var(--ink);color:#fff;padding:22px clamp(16px,4vw,48px)}
-h1{font:600 26px/1.2 Newsreader,Georgia,serif;margin:0}
-header p{margin:4px 0 0;color:#aebbc4;font-size:14px}
-main{padding:20px clamp(16px,4vw,48px);max-width:1100px;margin:auto}
-.top{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
-.meter{flex:1 1 280px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
-.meter b{font-size:22px}
-.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:8px}
-.bar i{display:block;height:100%;background:var(--s-done)}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:5px 12px;cursor:pointer;font:inherit;color:var(--ink)}
-.chip[aria-pressed=true]{background:var(--acc);color:#fff;border-color:var(--acc)}
-.row{display:grid;grid-template-columns:70px 1fr auto;gap:6px 16px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:8px;padding:12px 16px;margin-bottom:10px;cursor:pointer;width:100%;text-align:left;font:inherit;color:inherit}
-.row:hover{border-color:var(--acc);border-left-color:var(--c)}
-.no{font-weight:700;color:var(--acc);grid-row:span 2}
-.no small{display:block;font-weight:400;color:var(--mut);font-size:12px}
-.ttl{font-weight:500}
-.meta{color:var(--mut);font-size:13px;grid-column:2}
-.tag{display:inline-block;background:#e4ecef;border-radius:4px;padding:0 7px;margin-right:4px;font-size:12px;color:var(--ink)}
-.st{grid-column:3;grid-row:1/span 2;text-align:right;align-self:center;min-width:110px}
-.pill{display:inline-block;color:#fff;background:var(--c);border-radius:12px;padding:1px 10px;font-size:12px;font-weight:500}
-.mini{height:5px;background:var(--line);border-radius:3px;margin-top:8px}
-.mini i{display:block;height:100%;background:var(--c);border-radius:3px}
-.late{color:var(--s-block);font-weight:700}
-dialog{border:0;border-radius:10px;padding:0;width:min(640px,94vw);max-height:92vh}
-dialog::backdrop{background:#0008}
-.dlg{padding:20px 22px;display:grid;gap:12px}
-.dlg h2{font:600 20px Newsreader,serif;margin:0}
-label{display:grid;gap:3px;font-size:13px;color:var(--mut)}
-input,select,textarea{font:inherit;color:var(--ink);padding:7px 9px;border:1px solid var(--line);border-radius:6px;width:100%}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.sub{display:flex;gap:8px;align-items:flex-start;color:var(--ink);font-size:14px}
-.sub input{width:auto;margin-top:4px}
-.log{font-size:13px;border-left:3px solid var(--line);padding-left:10px;margin:0 0 6px}
-.log time{color:var(--mut)}
-.btns{display:flex;gap:8px;justify-content:flex-end}
-button.p{background:var(--acc);color:#fff;border:0;border-radius:6px;padding:8px 18px;font:inherit;cursor:pointer}
-button.s{background:none;border:1px solid var(--line);border-radius:6px;padding:8px 14px;font:inherit;cursor:pointer;color:var(--ink)}
-.note{background:#fff4d6;border:1px solid #ecd48a;border-radius:6px;padding:8px 12px;font-size:13px;margin-bottom:14px}
-.hd{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start}
-.acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.acts button{background:#ffffff1a;color:#fff;border:1px solid #ffffff55;border-radius:6px;padding:7px 12px;font:inherit;cursor:pointer}
-#who{font-size:12px;color:#aebbc4}
-#report{display:none}
-input,select,textarea{font-size:16px}
-input:disabled,select:disabled{background:#f3f5f6;color:var(--ink);opacity:1}
-@media(max-width:560px){dialog{width:100vw;max-height:100vh;height:100vh;border-radius:0}.btns button{flex:1}}
-@media print{
- body{background:#fff;font-size:11px}header{background:none;color:#000;padding:0 0 8px;border-bottom:2px solid #000}
- header p{color:#333}.acts,.top,#list,#demo,dialog{display:none!important}
- #report{display:block}main{padding:8px 0;max-width:none}
- #report table{width:100%;border-collapse:collapse}
- #report th,#report td{border:1px solid #999;padding:4px 6px;text-align:left;vertical-align:top}
- #report th{background:#e8e8e8}#report tr{break-inside:avoid}
-}
-:focus-visible{outline:3px solid #f0a500;outline-offset:2px}
-@media(max-width:560px){.row{grid-template-columns:1fr}.no{grid-row:auto}.meta,.st{grid-column:1;grid-row:auto;text-align:left}.g2{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#e8eef0;--acc:#0b6477;--ink:#12222c;--late:#8a2a5b}
-body{background:radial-gradient(900px 420px at 100% -10%,#cde2e7,transparent) fixed,var(--bg)}
-header{background:linear-gradient(120deg,#0a1f29,#0b4a5a);padding:26px clamp(16px,4vw,48px) 64px}
-h1{font-size:clamp(22px,4.2vw,32px)}
-main{margin-top:-44px}
-.hero{display:flex;gap:20px;flex-wrap:wrap;align-items:center;background:var(--card);border-radius:16px;padding:18px;box-shadow:0 8px 28px #0b25301f;margin-bottom:16px}
-.ring{--p:0;width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--s-done) calc(var(--p)*1%),#e1e8eb 0);display:grid;place-items:center;position:relative;flex:none}
-.ring::before{content:"";position:absolute;inset:11px;background:#fff;border-radius:50%}
-.ring div{position:relative;text-align:center;line-height:1.15}
-.ring b{font:600 26px Newsreader,serif;display:block}.ring small{color:var(--mut);font-size:12px}
-.tiles{flex:1 1 360px;display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px}
-.tile{border:1px solid var(--line);border-top:4px solid var(--c);background:#fff;border-radius:10px;padding:8px 12px;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
-.tile b{display:block;font:600 26px/1.1 Newsreader,serif}.tile span{font-size:13px;color:var(--mut)}
-.tile[aria-pressed=true]{background:var(--c);color:#fff}.tile[aria-pressed=true] span{color:#ffffffd0}
-.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-.tools input{flex:1 1 220px;width:auto}.tools select{flex:0 1 190px;width:auto}
-.owners{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.chip em{font-style:normal;background:#0000001a;border-radius:10px;padding:0 7px;margin-left:6px;font-size:12px}
-.chip[aria-pressed=true] em{background:#ffffff40}
-.row{border-radius:12px;border:1px solid var(--line);border-left:6px solid var(--c);box-shadow:0 2px 8px #0b25300f;padding:14px 18px;transition:transform .15s,box-shadow .15s}
-.row:hover{transform:translateY(-1px);box-shadow:0 8px 18px #0b25301f}
-.no{font:600 24px Newsreader,serif}.no small{font:400 12px Manrope,sans-serif}
-.ttl{font-weight:700}.soon{color:#a45f00;font-weight:700}
-.tag{background:#dcebee;color:#0a4352;border-radius:10px;padding:1px 9px}
-@media(max-width:560px){.ring{width:92px;height:92px}.ring b{font-size:21px}.hero{padding:14px}}
-@media print{.hero,.tools,.owners{display:none!important}}
-</style>
+
+
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 <header><div class="hd"><div>
   <h1>BoD Resolution Tracker</h1>
   <p>Meeting NUBDM-04-2025-26 · held 26 Aug 2026 · Administrative Orders issued 03 Oct 2026 by DVCAFA</p></div>
-  <div class="acts"><span id="who"></span><button id="prt">Print report</button><button id="signin" hidden>Editor sign-in</button></div>
+  <div class="acts"><span id="who"></span><button id="prt" disabled>Print report</button><button id="signin" hidden>Editor sign-in</button></div>
 </div></header>
 <main>
-  <div id="demo" class="note" hidden>Demo mode: changes are saved only in this browser. Add your Firebase config in the <code>CFG</code> block of this file to share updates with your team.</div>
+  <div id="demo" class="note" hidden>Demo mode: changes are saved only in this browser. Add your Firebase config in <code>config.js</code> to share updates with your team.</div>
   <section class="hero">
     <div class="ring" id="ring"><div><b id="pct">0%</b><small>implemented</small></div></div>
     <div class="tiles" id="chips" role="group" aria-label="Filter by status"></div>
@@ -114,161 +26,20 @@ main{margin-top:-44px}
     <select id="sort" aria-label="Sort"><option value="id">Sort by order number</option><option value="due">Sort by due date</option></select>
   </div>
   <div class="owners" id="owners" role="group" aria-label="Filter by responsible person"></div>
+  <p id="notice" role="status" aria-live="polite">Loading orders…</p>
+  <button id="initialize" class="p" hidden>Initialize missing orders</button>
   <div id="list"></div>
   <section id="report"></section>
 </main>
 
-<dialog id="dlg"><div class="dlg" id="form"></div></dialog>
-<dialog id="login"><form class="dlg" id="lform" method="dialog">
-  <h2>Editor sign-in</h2><button class="p" type="button" id="gbtn">Sign in with Google</button><p style="margin:0;color:var(--mut);font-size:13px">Or use an email and password:</p><label>Email<input id="em" type="email" required></label>
-  <label>Password<input id="pw" type="password" required></label>
-  <p id="lerr" class="late" style="margin:0"></p>
-  <div class="btns"><button class="s" type="button" onclick="this.closest('dialog').close()">Cancel</button><button class="p">Sign in</button></div>
+<dialog id="dlg" aria-labelledby="order-heading"><div class="dlg" id="form"></div></dialog>
+<dialog id="login" aria-labelledby="login-heading"><form class="dlg" id="lform" method="dialog">
+  <h2 id="login-heading">Editor sign-in</h2><button class="p" type="button" id="gbtn">Sign in with Google</button><p style="margin:0;color:var(--mut);font-size:13px">Or use an email and password:</p><label>Email<input id="em" type="email" autocomplete="username" required></label>
+  <label>Password<input id="pw" type="password" autocomplete="current-password" required></label>
+  <p role="alert" id="lerr" class="late" style="margin:0"></p>
+  <div class="btns"><button class="s" type="button" id="cancel-login">Cancel</button><button class="p" type="submit">Sign in</button></div>
 </form></dialog>
 
-<script type="module">
-/* 1. Paste your Firebase web-app config here (Project settings > General > Your apps). */
-const CFG={
-  apiKey:"AIzaSyDp9T9ltfatZDgNVg1qk_xAcyoe4_YdbWM",
-  authDomain:"dvcafa-orders---nubdm04.firebaseapp.com",
-  projectId:"dvcafa-orders---nubdm04",
-  storageBucket:"dvcafa-orders---nubdm04.firebasestorage.app",
-  messagingSenderId:"517454012791",
-  appId:"1:517454012791:web:3cd1eec0c8f12edb200172"
-};
-
-const ST={todo:["Not started","--s-todo"],prog:["In progress","--s-prog"],done:["Implemented","--s-done"],block:["Blocked","--s-block"]};
-const O=(n,t,r,ow,sum,x={})=>({id:n,title:t,res:r,owners:ow,summary:sum,status:"todo",progress:0,due:"",done:"",link:"",log:[],subs:[],...x});
-const SEED=[
-O("001","Budget 2026-27 approved with conditions","02",["DVCP","DVCAFA"],"Budget approved (income 20,925,896 OMR; opex 18,077,678 OMR; surplus 517,524 OMR) subject to three conditions.",{target:"Next BoD meeting",subs:[
- {t:"Mitigation plan for IMCO and CoE with 5-year enrolment projections presented to BoD",o:"DVCP",d:false},
- {t:"Expenditure-to-income ratio for 2026-27 brought down to 82.15%",o:"DVCAFA",d:false},
- {t:"Hostel revenue and expenditure budgeted at least at break-even",o:"DVCAFA",d:false}]}),
-O("002","Monthly allowance for weak students on flexible scholarships (Tamkeen)","04",["Executive Head of Finance","Executive Head of Admission and Registration"],"30 OMR a month, 10 months a year, for the entire study period. Earlier orders ratified and made absolute."),
-O("003","Monthly allowance for flexible-scholarship students of all categories","05",["Executive Head of Finance","Executive Head of Admission and Registration"],"30 OMR a month for one year (10 months), regardless of income, as a marketing measure. Ratified and made absolute."),
-O("004","Annual payment of 10,000 OMR to each BoD member (2025-26)","06",["DVCAFA"],"Place the BoD recommendation before the next AGM for its resolution.",{target:"Next AGM"}),
-O("005","Promotion policy for academic and non-academic staff","07",["Executive Head of HR"],"Incorporate the policy in the HR manual and submit to the BoD with a dedicated budget. No promotions without an approved policy.",{target:"BoD meeting, October 2026"}),
-O("006","Ratification of engineering instructions to contractors","08",["Executive Head of Finance"],"Fortune Engineering (Rustaq): 13,180 OMR, 94 days. ADCC (Sultan Haitham City): 28,502 OMR. Mustafa and Kamal Ashraf (Sohar): 16,493 OMR, 65 days."),
-O("007","Request of the Dean of CoP for Assistant Dean (Research)","12",["DVCAFA"],"Board resolved to keep to the recently approved organizational structure. Communicate the decision to the Dean of CoP."),
-O("008","Signature of the 6-month audit report (M/s Moore)","15",["Executive Head of Finance"],"Dr. Hatim Al Shanfari signs before the report goes to the BoD Chairman for signature."),
-O("009","Confirm BoD member attendance one week before meetings","17",["DVCAFA","Company Secretary"],"Confirm attendance at least a week ahead and pass the information to the Chairman.")
-].map(o=>({...o,order:"NU/DVCAFA/20261003/"+o.id,res:o.res+"/NUBDM-04-2025-26"}));
-
-const $=s=>document.querySelector(s), LIVE=!CFG.apiKey.startsWith("YOUR");
-let user=null, data={}, filter="all", fs, auth, au, db;
-const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const pct=o=>o.subs.length?Math.round(o.subs.filter(s=>s.d).length/o.subs.length*100):o.progress;
-const canEdit=()=>!LIVE||!!user;
-const late=o=>o.due&&o.status!=="done"&&o.due<new Date().toISOString().slice(0,10);
-
-async function save(o){
-  data[o.id]=o;
-  if(LIVE) await fs.setDoc(fs.doc(db,"resolutions",o.id),o);
-  else{localStorage.setItem("bod-tracker",JSON.stringify(data));render();}
-}
-async function init(){
-  if(!LIVE){$("#demo").hidden=false;
-    const s=localStorage.getItem("bod-tracker");
-    data=s?JSON.parse(s):Object.fromEntries(SEED.map(o=>[o.id,o]));return render();}
-  const B="https://www.gstatic.com/firebasejs/10.12.2/";
-  const app=(await import(B+"firebase-app.js")).initializeApp(CFG);
-  fs=await import(B+"firebase-firestore.js"); au=await import(B+"firebase-auth.js");
-  db=fs.getFirestore(app); auth=au.getAuth(app);
-  $("#signin").hidden=false;
-  let empty=false;
-  au.onAuthStateChanged(auth,async u=>{
-    user=u;$("#who").textContent=u?u.email:"";$("#signin").textContent=u?"Sign out":"Editor sign-in";
-    if(u){$("#login").close();if(empty)for(const o of SEED)await save(o);}
-    render();
-  });
-  fs.onSnapshot(fs.collection(db,"resolutions"),async snap=>{
-    empty=snap.empty;
-    if(empty){data=Object.fromEntries(SEED.map(o=>[o.id,o]));if(user)for(const o of SEED)await save(o);}
-    else{data={};snap.forEach(d=>data[d.id]=d.data());}
-    render();
-  },()=>{$("#list").innerHTML="<p class='late'>Cannot load data. Check the Firestore rules allow public reads.</p>"});
-}
-$("#signin").onclick=()=>user?au.signOut(auth):$("#login").showModal();
-$("#prt").onclick=()=>print();
-$("#gbtn").onclick=async()=>{try{await au.signInWithPopup(auth,new au.GoogleAuthProvider())}
-  catch{$("#lerr").textContent="Google sign-in failed. Allow pop-ups for this site and try again."}};
-$("#lform").onsubmit=async e=>{e.preventDefault();
-  try{await au.signInWithEmailAndPassword(auth,$("#em").value,$("#pw").value)}
-  catch{$("#lerr").textContent="Sign-in failed. Check the email and password.";$("#login").showModal()}};
-
-let owner="all",q="",sortBy="id";
-{const p=new URLSearchParams(location.hash.slice(1));owner=p.get("o")||"all";filter=p.get("s")||"all";}
-const hashSet=()=>history.replaceState(null,"","#"+new URLSearchParams({o:owner,s:filter}));
-const daysTo=o=>Math.round((new Date(o.due)-new Date(new Date().toISOString().slice(0,10)))/864e5);
-const dueTxt=o=>{if(!o.due)return esc(o.target||"No due date set");
-  if(o.status==="done")return "Due "+esc(o.due);const d=daysTo(o);
-  return d<0?`<span class="late">Overdue by ${-d} day${d===-1?"":"s"}</span>`:d<=14?`<span class="soon">Due in ${d} day${d===1?"":"s"}</span>`:"Due "+esc(o.due)};
-function render(){
-  const all=Object.values(data).sort((a,b)=>a.id.localeCompare(b.id));
-  const done=all.filter(o=>o.status==="done").length;
-  const avg=all.length?Math.round(all.reduce((t,o)=>t+(o.status==="done"?100:pct(o)),0)/all.length):0;
-  $("#ring").style.setProperty("--p",avg);$("#pct").textContent=avg+"%";
-  const cnt=k=>k==="all"?all.length:k==="late"?all.filter(late).length:all.filter(o=>o.status===k).length;
-  const T=[["all","All orders","--acc"],...Object.entries(ST).map(([k,v])=>[k,v[0],v[1]]),["late","Overdue","--late"]];
-  $("#chips").innerHTML=T.map(([k,l,c])=>`<button class="tile" data-f="${k}" style="--c:var(${c})" aria-pressed="${filter===k}"><b>${cnt(k)}</b><span>${l}</span></button>`).join("");
-  const names=[...new Set(all.flatMap(o=>o.owners))];
-  const open=x=>all.filter(o=>o.owners.includes(x)&&o.status!=="done").length;
-  $("#owners").innerHTML=[["all","Everyone",all.filter(o=>o.status!=="done").length],...names.map(x=>[x,x,open(x)])]
-    .map(([k,l,n])=>`<button class="chip" data-o="${esc(k)}" aria-pressed="${owner===k}" title="${n} open">${esc(l)}<em>${n}</em></button>`).join("");
-  const qq=q.toLowerCase();
-  const rows=all.filter(o=>(filter==="all"||(filter==="late"?late(o):o.status===filter))&&(owner==="all"||o.owners.includes(owner))
-    &&(!qq||(o.title+o.summary+o.res+o.owners.join(" ")).toLowerCase().includes(qq)));
-  if(sortBy==="due")rows.sort((a,b)=>(a.due||"9").localeCompare(b.due||"9")||a.id.localeCompare(b.id));
-  $("#list").innerHTML=rows.map(o=>`
-   <button class="row" data-id="${o.id}" style="--c:var(${ST[o.status][1]})">
-    <div class="no">${o.id}<small>Item ${esc(o.res.split("/")[0])}</small></div>
-    <div class="ttl">${esc(o.title)}</div>
-    <div class="meta">${o.owners.map(x=>`<span class="tag">${esc(x)}</span>`).join("")} ${dueTxt(o)}</div>
-    <div class="st"><span class="pill">${ST[o.status][0]}</span><div class="mini"><i style="width:${o.status==="done"?100:pct(o)}%"></i></div></div>
-   </button>`).join("")||"<p>No resolutions match these filters.</p>";
-  $("#report").innerHTML=`<p>Status report as of ${new Date().toLocaleDateString("en-GB")} · ${done} of ${all.length} implemented · overall progress ${avg}%${owner==="all"?"":" · Responsible: "+esc(owner)}</p>
- <table><tr><th>Order</th><th>Resolution</th><th>Subject</th><th>Responsible</th><th>Status</th><th>Due</th><th>Done</th><th>Latest update</th></tr>${rows.map(o=>`<tr><td>${o.id}</td><td>${esc(o.res.split("/")[0])}</td><td>${esc(o.title)}${o.subs.map(s=>`<br>${s.d?"[x]":"[ ]"} ${esc(s.t)} (${esc(s.o)})`).join("")}</td><td>${o.owners.map(esc).join(", ")}</td><td>${ST[o.status][0]}, ${o.status==="done"?100:pct(o)}%</td><td>${esc(o.due||o.target||"Not set")}</td><td>${esc(o.done)}</td><td>${o.log.length?esc(o.log.at(-1).d+": "+o.log.at(-1).t):""}</td></tr>`).join("")}</table>`;
-}
-$("#chips").onclick=e=>{const b=e.target.closest("[data-f]");if(b){filter=b.dataset.f;hashSet();render()}};
-$("#owners").onclick=e=>{const b=e.target.closest("[data-o]");if(b){owner=b.dataset.o;hashSet();render()}};
-$("#q").oninput=e=>{q=e.target.value;render()};
-$("#sort").onchange=e=>{sortBy=e.target.value;render()};
-$("#list").onclick=e=>{const r=e.target.closest(".row");if(r)openEdit(r.dataset.id)};
-
-function openEdit(id){
-  const o=structuredClone(data[id]);
-  $("#form").innerHTML=`
-   <h2>${o.id} · ${esc(o.title)}</h2>
-   <div style="font-size:13px;color:var(--mut)">Order ${esc(o.order)} · Resolution ${esc(o.res)}<br>Assigned: ${o.owners.map(esc).join(", ")}</div>
-   <p style="margin:0">${esc(o.summary)}</p>
-   <div class="g2">
-    <label>Status<select id="f-st">${Object.entries(ST).map(([k,v])=>`<option value="${k}" ${o.status===k?"selected":""}>${v[0]}</option>`).join("")}</select></label>
-    <label>Due date<input id="f-due" type="date" value="${esc(o.due)}"></label>
-    ${o.subs.length?"":`<label>Progress: <span id="pv">${o.progress}</span>%<input id="f-pr" type="range" min="0" max="100" step="5" value="${o.progress}"></label>`}
-    <label>Date implemented<input id="f-dn" type="date" value="${esc(o.done)}"></label>
-   </div>
-   ${o.subs.map((s,i)=>`<label class="sub"><input type="checkbox" data-i="${i}" ${s.d?"checked":""}><span>${esc(s.t)} <span class="tag">${esc(s.o)}</span></span></label>`).join("")}
-   <label>Evidence link (letter, email, minutes)<input id="f-ln" type="url" value="${esc(o.link)}" placeholder="https://"></label>
-   <label>Add an update<textarea id="f-nt" rows="2" placeholder="What was done, with whom, when"></textarea></label>
-   <div>${o.log.slice().reverse().map(l=>`<p class="log"><time>${esc(l.d)}</time> ${esc(l.t)}</p>`).join("")}</div>
-   <div class="btns"><button class="s" id="x">Cancel</button><button class="p" id="ok">Save changes</button></div>`;
-  const dlg=$("#dlg");dlg.showModal();
-  if($("#f-pr"))$("#f-pr").oninput=e=>$("#pv").textContent=e.target.value;
-  $("#x").onclick=()=>dlg.close();
-  if(!canEdit()){dlg.querySelectorAll("input,select,textarea").forEach(e=>e.disabled=true);
-    $("#ok").hidden=true;$("#f-nt").closest("label").hidden=true;$("#x").textContent="Close";
-    if(o.link)$("#f-ln").insertAdjacentHTML("afterend",`<a href="${esc(o.link)}" target="_blank" rel="noopener">Open evidence</a>`);}
-  $("#ok").onclick=async()=>{
-    o.status=$("#f-st").value;o.due=$("#f-due").value;o.done=$("#f-dn").value;o.link=$("#f-ln").value;
-    document.querySelectorAll(".sub input").forEach(c=>o.subs[c.dataset.i].d=c.checked);
-    if($("#f-pr"))o.progress=+$("#f-pr").value;
-    if(o.status==="done"){o.progress=100;o.subs.forEach(s=>s.d=true);o.done=o.done||new Date().toISOString().slice(0,10)}
-    const t=$("#f-nt").value.trim();
-    if(t)o.log.push({d:new Date().toISOString().slice(0,10),t,by:auth?.currentUser?.email||"local"});
-    await save(o);dlg.close();
-  };
-}
-init();
-</script>
+<script type="module" src="./app.js"></script>
 </body>
 </html>
